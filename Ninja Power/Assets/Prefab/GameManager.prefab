@@ -43,3 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130550709f8f6624e913fb0eb7d432b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 1
+  power: 0
+  experience: 0
+  maxExp: 10
+  vip: 0
+  vipPrice: 0a000000140000001e0000002800000032000000
+  gold: 0
+  diamonds: 0
+  spentDiamonds: 0
+  stage: 1
+  numNinjas: 0
