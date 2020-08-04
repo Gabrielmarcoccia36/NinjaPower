@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get { return _instance; } }
+    private static GameManager _instance;
+
     [Header("Player Info")]
     public int level = 1;
     public int power = 0;
     [SerializeField]
-    private int experience = 0;
+    private float experience = 0;
     [SerializeField]
-    private int maxExp = 10;
+    private float maxExp = 10;
 
     [Header("VIP / VIP Level Costs")]
     public int vip = 0;
@@ -24,6 +27,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int diamonds = 0;
     [SerializeField]
+    private int boughtDiamonds = 0;
+    [SerializeField]
     private int spentDiamonds = 0;
 
     [Header("Game Info")]
@@ -34,6 +39,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (_instance != null && _instance != this)
+            Destroy(gameObject);
+        else
+        {
+            _instance = this;
+
+            DontDestroyOnLoad(gameObject);
+        }
+
         maxVip = vipPrice.Length;
     }
 
@@ -46,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     public bool CheckGold(int price)
     {
-        if (price >= gold)
+        if (gold >= price)
         {
             return true;
         }
@@ -58,22 +72,32 @@ public class GameManager : MonoBehaviour
 
     public void ConsumeGold(int price)
     {
-        if (price >= gold)
+        if (gold >= price)
         {
             gold -= price;
             Debug.Log("GameManager, ConsumeGold(); Player spent " + price + " gold.");
         }
     }
 
-    public void AddDiamonds(int add)
+    public void AddDiamonds(int add, bool bought)
     {
         diamonds += add;
-        Debug.Log("GameManager, AddDiamonds(); Player received " + add + " diamonds.");
+
+        if (bought)
+        {
+            boughtDiamonds += add;
+            CheckVIP();
+            Debug.Log("GameManager, AddDiamonds(); Player bought " + add + " diamonds.");
+        }
+        else
+        {
+            Debug.Log("GameManager, AddDiamonds(); Player received " + add + " diamonds.");
+        }
     }
 
     public bool CheckDiamonds(int price)
     {
-        if (price >= diamonds)
+        if (diamonds >= price)
         {
             return true;
         }
@@ -85,11 +109,10 @@ public class GameManager : MonoBehaviour
 
     public void ConsumeDiamonds(int price)
     {
-        if (price >= diamonds)
+        if (diamonds >= price)
         {
             diamonds -= price;
             spentDiamonds += price;
-            CheckVIP();
             Debug.Log("GameManager, ConsumeGold(); Player spent " + price + " diamonds.");
         }
     }
@@ -97,10 +120,16 @@ public class GameManager : MonoBehaviour
     // VIP
     private void CheckVIP()
     {
-        if (spentDiamonds >= vipPrice[vip])
+        if (vip != vipPrice.Length)
         {
-            vip++;
-            Debug.Log("GameManager, CheckVip(): Player increased their VIP level.");
+            for (int i = vip; i < vipPrice.Length; i++)
+            {
+                if (boughtDiamonds >= vipPrice[i])
+                {
+                    vip++;
+                    Debug.Log("GameManager, CheckVip(): Player increased their VIP level to " + vip);
+                }
+            }
         }
     }
 
@@ -108,7 +137,7 @@ public class GameManager : MonoBehaviour
     public void AddExp(int exp)
     {
         experience += exp;
-        if (experience >= maxExp)
+        while (experience >= maxExp)
         {
             LevelUp();
         }
@@ -125,7 +154,12 @@ public class GameManager : MonoBehaviour
         {
             experience = experience - maxExp;
         }
-        maxExp *= 2;
+        maxExp *= 1.05f;
         Debug.Log("GameManager, LevelUp(): Player leveled up.");
+    }
+
+    public int[] GetData()
+    {
+        return new int[] { level, (int)experience, vip, power, gold, diamonds };
     }
 }

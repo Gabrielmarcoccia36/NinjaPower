@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1070832486450677314}
   - component: {fileID: 1038825325679369525}
+  - component: {fileID: 3479957743823100638}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -54,3 +55,17 @@ MonoBehaviour:
   spentDiamonds: 0
   stage: 1
   numNinjas: 0
+--- !u!114 &3479957743823100638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7939285085990281763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ff821af4fba40478c965106605caee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  current: 
+  amount: 0
