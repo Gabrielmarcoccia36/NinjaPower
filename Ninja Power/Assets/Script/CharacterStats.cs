@@ -28,7 +28,7 @@ public class CharacterStats : MonoBehaviour
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
         currentHealth -= damage;
-        Debug.Log(transform.name + " takes " + damage + " damage");
+        Debug.Log("CharacterStats, TakeDamage(); takes " + damage + " damage");
 
         if(currentHealth <= 0)
         {
@@ -39,6 +39,6 @@ public class CharacterStats : MonoBehaviour
     public virtual void Die()
     {
         gameObject.SetActive(false);
-        Debug.Log(transform.name + " died");
+        Debug.Log(" CharacterStats, Die(); died");
     }
 }
