@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
 
 [CustomEditor(typeof(Inventory))]
 public class InventoryEditor : Editor
@@ -11,6 +12,8 @@ public class InventoryEditor : Editor
     private SerializedProperty itemsProperty;
     private const string inventoryPropItemImagesName = "itemImages";
     private const string inventoryPropItemsName = "items";
+
+
     private void OnEnable()
     {
         itemImagesProperty = serializedObject.FindProperty(inventoryPropItemImagesName);

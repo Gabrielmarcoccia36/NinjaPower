@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
+    public Text Stack;
+
     public Image[] itemImages = new Image[numItemSlots];
     public ItemO[] items = new ItemO[numItemSlots];
     public const int numItemSlots = 15;
+
     public void AddItem(ItemO itemToAdd)
     {
         for (int i = 0; i < items.Length; i++)
@@ -34,4 +37,5 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+
 }

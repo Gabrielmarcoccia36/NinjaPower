@@ -6,8 +6,12 @@ public class CharacterStats : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth { get; private set; }
 
-    public Stat damege;
-    public Stat armor;
+    public Stat atk;
+    public Stat def;
+    public Stat Tai;
+    public Stat Nin;
+    public Stat Spd;
+    public Stat Agl;
 
     private void Awake()
     {
@@ -22,13 +26,13 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    public void TakeDamage (int damage)
+    public void TakeDamage (int atk)
     {
-        damage -= armor.GetValue();
-        damage = Mathf.Clamp(damage, 0, int.MaxValue);
+        atk -= def.GetValue();
+        atk = Mathf.Clamp(atk, 0, int.MaxValue);
 
-        currentHealth -= damage;
-        Debug.Log("CharacterStats, TakeDamage(); takes " + damage + " damage");
+        currentHealth -= atk;
+        Debug.Log("CharacterStats, TakeDamage(); takes " + atk + " damage");
 
         if(currentHealth <= 0)
         {
