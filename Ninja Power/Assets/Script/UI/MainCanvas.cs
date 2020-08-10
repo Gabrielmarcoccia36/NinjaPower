@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class MainCanvas : MonoBehaviour
 {
-    private GameManager gameManager;
-
     // Data
     [Header("Data")]
     [SerializeField]
@@ -52,14 +50,13 @@ public class MainCanvas : MonoBehaviour
 
     private void Awake()
     {
-        gameManager = FindObjectOfType<GameManager>();
         curPanel = MainPanel;
         fightButton.SetActive(false);
     }
 
     private void Update()
     {
-        data = gameManager.GetData();
+        data = GameManager.Instance.GetData();
         UpdateUI();
         UpdateStageInfo();
     }

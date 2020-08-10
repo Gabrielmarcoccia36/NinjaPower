@@ -10,12 +10,23 @@ public class StageCanvas : MonoBehaviour
     private GameObject winText, loseText, infoText;
 
     private bool leave = false;
+    private bool diamonds = false;
     private float timer;
+    private int curStage;
 
     [SerializeField]
-    private int goldToAdd = 300;
+    private int goldToAdd = 100;
     [SerializeField]
-    private int expToAdd = 50;
+    private int expToAdd = 10;
+
+    private void Awake()
+    {
+        curStage = GameManager.Instance.GetStage();
+        if (curStage % 10 == 0)
+        {
+            diamonds = true;
+        }
+    }
 
     private void Update()
     {
@@ -32,12 +43,26 @@ public class StageCanvas : MonoBehaviour
 
     public void OnWinClick()
     {
-        GameManager.Instance.AddGold(goldToAdd);
-        GameManager.Instance.AddExp(expToAdd);
-        GameManager.Instance.BeatStage();
-        winText.SetActive(true);
-        infoText.SetActive(true);
-        infoText.GetComponent<TextMeshProUGUI>().text = "+" + goldToAdd + " Gold\n+" + expToAdd + " Exp";
+        if (!diamonds)
+        {
+            GameManager.Instance.AddGold(goldToAdd * curStage);
+            GameManager.Instance.AddExp(expToAdd * curStage);
+            GameManager.Instance.BeatStage();
+            winText.SetActive(true);
+            infoText.SetActive(true);
+            infoText.GetComponent<TextMeshProUGUI>().text = "+" + goldToAdd + " Gold\n+" + expToAdd + " Exp";
+        }
+        else
+        {
+            GameManager.Instance.AddGold(goldToAdd * curStage);
+            GameManager.Instance.AddExp(expToAdd * curStage);
+            GameManager.Instance.AddDiamonds(50, false);
+            GameManager.Instance.BeatStage();
+            winText.SetActive(true);
+            infoText.SetActive(true);
+            infoText.GetComponent<TextMeshProUGUI>().text = "+" + goldToAdd + " Gold\n+" + expToAdd + " Exp\n+50 Diamonds";
+        }
+        
         leave = true;
     }
     public void OnLoseClick()

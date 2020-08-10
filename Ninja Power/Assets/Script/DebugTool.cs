@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DebugTool : MonoBehaviour
 {
-    private GameManager gameManager;
-
     public string current;
     public int amount = 0;
     private int index = 0;
@@ -13,7 +11,6 @@ public class DebugTool : MonoBehaviour
 
     private void Awake()
     {
-        gameManager = FindObjectOfType<GameManager>();
         current = functions[0];
     }
 
@@ -53,6 +50,10 @@ public class DebugTool : MonoBehaviour
         {
             amount += 5;
         }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            GameManager.Instance.BeatStage();
+        }
 
 
 
@@ -69,27 +70,27 @@ public class DebugTool : MonoBehaviour
     {
         if (index == 0)
         {
-            gameManager.AddGold(amount);
+            GameManager.Instance.AddGold(amount);
         }
         else if (index == 1)
         {
-            gameManager.ConsumeGold(amount);
+            GameManager.Instance.ConsumeGold(amount);
         }
         else if (index == 2)
         {
-            gameManager.AddDiamonds(amount, false);
+            GameManager.Instance.AddDiamonds(amount, false);
         }
         else if (index == 3)
         {
-            gameManager.AddDiamonds(amount, true);
+            GameManager.Instance.AddDiamonds(amount, true);
         }
         else if (index == 4)
         {
-            gameManager.ConsumeDiamonds(amount);
+            GameManager.Instance.ConsumeDiamonds(amount);
         }
         else if (index == 5)
         {
-            gameManager.AddExp(amount);
+            GameManager.Instance.AddExp(amount);
         }
     }
 }
