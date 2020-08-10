@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MainCanvas : MonoBehaviour
 {
@@ -39,22 +40,28 @@ public class MainCanvas : MonoBehaviour
 
     private GameObject curPanel;
 
+    // Stage Stuff
     [Header("Buttons")]
     [SerializeField]
     private GameObject fightButton;
+    [SerializeField]
+    private GameObject StageProgress;
+    public TextMeshProUGUI SPText;
+    [SerializeField]
+    private TextMeshProUGUI CurStage;
 
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
         curPanel = MainPanel;
         fightButton.SetActive(false);
-
     }
 
     private void Update()
     {
         data = gameManager.GetData();
         UpdateUI();
+        UpdateStageInfo();
     }
 
     private void UpdateUI()
@@ -67,15 +74,22 @@ public class MainCanvas : MonoBehaviour
         diamondsUI.text = "Diamonds " + data[5];
     }
 
+    private void UpdateStageInfo()
+    {
+        CurStage.text = "Stage\n" + data[6].ToString();
+    }
+
     public void SetFightButton(bool ready)
     {
         if (ready)
         {
+            StageProgress.SetActive(false);
             fightButton.SetActive(true);
         }
         else
         {
             fightButton.SetActive(false);
+            StageProgress.SetActive(true);
         }
     }
 
@@ -117,7 +131,7 @@ public class MainCanvas : MonoBehaviour
 
     public void OnFightClicked()
     {
-
+        SceneManager.LoadScene(1);
     }
     #endregion
 }

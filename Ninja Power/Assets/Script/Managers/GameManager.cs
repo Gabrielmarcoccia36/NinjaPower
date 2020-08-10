@@ -160,6 +160,16 @@ public class GameManager : MonoBehaviour
 
     public int[] GetData()
     {
-        return new int[] { level, (int)experience, vip, power, gold, diamonds };
+        return new int[] { level, (int)experience, vip, power, gold, diamonds, stage };
+    }
+
+    // Stage Stuff
+    public int GetStage()
+    {
+        return stage;
+    }
+    public void BeatStage()
+    {
+        stage++;
     }
 }
