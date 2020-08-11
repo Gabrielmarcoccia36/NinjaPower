@@ -16,4 +16,7 @@ public abstract class ItemO : ScriptableObject
     [TextArea(10,15)]
     public string description;
 
+    public int currentStack = 1;
+    public int MxStack = 99999;
+
 }
