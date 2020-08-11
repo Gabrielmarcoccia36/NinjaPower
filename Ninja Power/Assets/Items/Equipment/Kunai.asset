@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Kunai
   m_EditorClassIdentifier: 
   sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  prefab: {fileID: 0}
   Type: 0
   description: A basic ninja tool for close or long combat.
+  currentStack: 1
+  MxStack: 1
   atkBonus: 15
   defBonus: 2
   lvl: 1
