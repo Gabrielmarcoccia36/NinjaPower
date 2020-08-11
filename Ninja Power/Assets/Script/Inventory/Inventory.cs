@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Inventory : MonoBehaviour
 {
-    public Text Stack;
-
+    public TextMeshProUGUI Stack;
+    
     public Image[] itemImages = new Image[numItemSlots];
     public ItemO[] items = new ItemO[numItemSlots];
     public const int numItemSlots = 15;
@@ -21,7 +22,7 @@ public class Inventory : MonoBehaviour
                 if(items[i] == itemToAdd)
                 {
                     itemToAdd.currentStack++;
-                    Debug.Log(itemToAdd.currentStack);
+                    Stack.text = itemToAdd.currentStack.ToString();
                     return;
                 }
             }

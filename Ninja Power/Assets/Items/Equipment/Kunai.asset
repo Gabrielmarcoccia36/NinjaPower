@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3eac875964dbb4cb49fb20b76c7998, type: 3}
   m_Name: Kunai
   m_EditorClassIdentifier: 
-  sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  sprite: {fileID: 21300000, guid: 54aa6df7317baf74eb3220ab9df005cf, type: 3}
   Type: 0
   description: A basic ninja tool for close or long combat.
-  currentStack: 1
-  MxStack: 1
+  currentStack: 4
+  MxStack: 10
   atkBonus: 15
   defBonus: 2
   lvl: 1

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
+using TMPro;
+
 
 [CustomEditor(typeof(Inventory))]
 public class InventoryEditor : Editor
@@ -12,12 +14,16 @@ public class InventoryEditor : Editor
     private SerializedProperty itemsProperty;
     private const string inventoryPropItemImagesName = "itemImages";
     private const string inventoryPropItemsName = "items";
+    private const string inventoryslotText = "Stack";
+    private SerializedProperty slotText;
+
 
 
     private void OnEnable()
     {
         itemImagesProperty = serializedObject.FindProperty(inventoryPropItemImagesName);
         itemsProperty = serializedObject.FindProperty(inventoryPropItemsName);
+        slotText = serializedObject.FindProperty(inventoryslotText);
     }
     public override void OnInspectorGUI()
     {
@@ -38,6 +44,7 @@ public class InventoryEditor : Editor
         {
             EditorGUILayout.PropertyField(itemImagesProperty.GetArrayElementAtIndex(index));
             EditorGUILayout.PropertyField(itemsProperty.GetArrayElementAtIndex(index));
+            EditorGUILayout.PropertyField(slotText);
         }
         EditorGUI.indentLevel--;
         EditorGUILayout.EndVertical();
