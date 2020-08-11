@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,6 +37,9 @@ public class GameManager : MonoBehaviour
     private int stage = 1;
     [SerializeField]
     private int numNinjas = 0;
+
+    [Header("Lineup")]
+    public CharacterStats[] Lineup;
 
     private void Awake()
     {
@@ -171,5 +175,11 @@ public class GameManager : MonoBehaviour
     public void BeatStage()
     {
         stage++;
+    }
+
+    // Power Level
+    public void SetPowerLevel(int amount)
+    {
+        power = amount;
     }
 }
