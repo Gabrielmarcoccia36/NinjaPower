@@ -11,8 +11,22 @@ public class Inventory : MonoBehaviour
     public ItemO[] items = new ItemO[numItemSlots];
     public const int numItemSlots = 15;
 
+
     public void AddItem(ItemO itemToAdd)
     {
+        if(itemToAdd.MxStack > 1)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if(items[i] == itemToAdd)
+                {
+                    itemToAdd.currentStack++;
+                    Debug.Log(itemToAdd.currentStack);
+                    return;
+                }
+            }
+
+        }
         for (int i = 0; i < items.Length; i++)
         {
             if (items[i] == null)
@@ -24,6 +38,7 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+
     public void RemoveItem(ItemO itemToRemove)
     {
         for (int i = 0; i < items.Length; i++)
