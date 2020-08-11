@@ -19,13 +19,4 @@ public abstract class ItemO : ScriptableObject
     public int currentStack = 1;
     public int MxStack = 99999;
 
-    public virtual ItemO GetCopy()
-    {
-        return this;
-    }
-
-    public virtual void Desroy()
-    {
-
-    }
 }

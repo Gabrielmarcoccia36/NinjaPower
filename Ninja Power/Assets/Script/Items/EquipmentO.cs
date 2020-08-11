@@ -14,15 +14,4 @@ public class EquipmentO : ItemO
     {
         Type = ItemType.Equipment;
     }
-
-    public override ItemO GetCopy()
-    {
-        return Instantiate(this);
-    }
-
-    public override void Desroy()
-    {
-        Destroy(this);
-    }
-
 }

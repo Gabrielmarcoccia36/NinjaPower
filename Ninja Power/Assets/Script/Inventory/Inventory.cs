@@ -6,16 +6,15 @@ using TMPro;
 
 public class Inventory : MonoBehaviour
 {
-    public TextMeshProUGUI Stack;
+    public TextMeshProUGUI Stack = new TextMeshProUGUI();
     
     public Image[] itemImages = new Image[numItemSlots];
     public ItemO[] items = new ItemO[numItemSlots];
     public const int numItemSlots = 15;
 
-
     public void AddItem(ItemO itemToAdd)
     {
-        if(itemToAdd.MxStack > 1)
+        if(itemToAdd.MxStack > 1 && itemToAdd.currentStack < itemToAdd.MxStack)
         {
             for (int i = 0; i < items.Length; i++)
             {
@@ -29,7 +28,7 @@ public class Inventory : MonoBehaviour
 
         }
         for (int i = 0; i < items.Length; i++)
-        {
+        {  
             if (items[i] == null)
             {
                 items[i] = itemToAdd;
