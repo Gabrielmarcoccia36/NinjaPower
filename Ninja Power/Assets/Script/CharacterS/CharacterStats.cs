@@ -36,7 +36,7 @@ public class CharacterStats : MonoBehaviour
             TakeDamage(10, true, Nature);
         }
 
-        PowerLevel = maxHealth + Tai.GetValue() + Nin.GetValue() + TaiDef.GetValue() + NinDef.GetValue() + TaiDef.GetValue() + Spd.GetValue();
+        CalculatePowerLevel();
     }
 
     public void TakeDamage (int damage, bool ninjutsu, int nature)
@@ -99,6 +99,11 @@ public class CharacterStats : MonoBehaviour
         {
             return 0;
         }
+    }
+
+    public void CalculatePowerLevel()
+    {
+        PowerLevel = maxHealth + Tai.GetValue() + Nin.GetValue() + TaiDef.GetValue() + NinDef.GetValue() + TaiDef.GetValue() + Spd.GetValue();
     }
 
     public virtual void Die()

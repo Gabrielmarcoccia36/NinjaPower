@@ -52,9 +52,24 @@ MonoBehaviour:
   vipPrice: 0a000000140000001e0000002800000032000000
   gold: 0
   diamonds: 0
+  boughtDiamonds: 0
   spentDiamonds: 0
   stage: 1
   numNinjas: 0
+  Lineup:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  lineupButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &3479957743823100638
 MonoBehaviour:
   m_ObjectHideFlags: 0
