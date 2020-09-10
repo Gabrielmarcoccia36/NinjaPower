@@ -91,6 +91,7 @@ public class FighterManager : MonoBehaviour
         {
             lineupBtnClicked = true;
             clickedBtn = 0;
+            buttons[0].text = " ";
         }
     }
     public void OnButtonTwoClicked()
@@ -108,6 +109,7 @@ public class FighterManager : MonoBehaviour
         {
             lineupBtnClicked = true;
             clickedBtn = 1;
+            buttons[1].text = " ";
         }
     }
     public void OnButtonThreeClicked()
@@ -125,6 +127,7 @@ public class FighterManager : MonoBehaviour
         {
             lineupBtnClicked = true;
             clickedBtn = 2;
+            buttons[2].text = " ";
         }
     }
     public void OnButtonFourClicked()
@@ -142,6 +145,7 @@ public class FighterManager : MonoBehaviour
         {
             lineupBtnClicked = true;
             clickedBtn = 3;
+            buttons[3].text = " ";
         }
     }
     public void OnButtonFiveClicked()
@@ -159,6 +163,7 @@ public class FighterManager : MonoBehaviour
         {
             lineupBtnClicked = true;
             clickedBtn = 4;
+            buttons[4].text = " ";
         }
     }
     public void OnButtonSixClicked()
@@ -176,6 +181,7 @@ public class FighterManager : MonoBehaviour
         {
             lineupBtnClicked = true;
             clickedBtn = 5;
+            buttons[5].text = " ";
         }
     }
 
