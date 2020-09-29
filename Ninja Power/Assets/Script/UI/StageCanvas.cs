@@ -22,10 +22,7 @@ public class StageCanvas : MonoBehaviour
     private void Awake()
     {
         curStage = GameManager.Instance.GetStage();
-        if (curStage % 10 == 0)
-        {
-            diamonds = true;
-        }
+        diamonds = curStage % 10 == 0;
     }
 
     private void Update()
